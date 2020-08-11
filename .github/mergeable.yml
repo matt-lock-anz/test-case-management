@@ -11,3 +11,9 @@ mergeable:
           body: >
             The following problems were found with this issue:
               - The issue should either be labeled `Feature` or `Bug`
+  - when: pull_request.*, pull_request_review.*
+      validate:
+        - do: label
+          must_exclude:
+            regex: 'DO NOT MERGE!'
+            message: 'PR not ready to be merged!'              
